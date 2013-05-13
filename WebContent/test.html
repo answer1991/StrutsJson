@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//测试jsonp
+		var jsonp = document.createElement("script");
+		jsonp.setAttribute('type', 'text/javascript');
+		jsonp.src = "/StrutsJson/hello.action?returnType=jsonp&returnName=hello";
+
+		var hello = function(data) {
+			console.dir(data);
+		};
+		document.head.appendChild(jsonp);
+	</script>
+
+	<script type="text/javascript">
+		//测试js
+		var jsCallback = function() {
+			console.dir(test2);
+		};
+		
+		var js = document.createElement("script");
+		js.setAttribute('type', 'text/javascript');
+		js.src = "/StrutsJson/hello.action?returnType=js&returnName=test2";
+		js.onload = function(){
+			jsCallback();
+		};
+		
+		document.head.appendChild(js);
+	</script>
+
+</body>
+</html>
